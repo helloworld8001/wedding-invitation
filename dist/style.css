@@ -50,3 +50,6 @@ body.photo-open{position:fixed;width:100%;overflow:hidden}
 .parking-address>strong{display:block;font-size:14px;font-weight:500;margin-bottom:5px}
 .parking-address p{font-size:12px}.parking-address .text-button{margin:7px 0 0;font-size:11px;justify-content:flex-start}
 .parking-address>a{font-family:var(--sans);font-size:11px;display:flex;align-items:center;gap:7px;min-height:36px}.parking-address>a svg{width:14px;height:14px}
+
+.embedded-map{margin:22px -14px 0;border:1px solid var(--line);background:#fff;overflow:hidden}
+.embedded-map iframe{display:block;width:100%;height:460px;border:0}
