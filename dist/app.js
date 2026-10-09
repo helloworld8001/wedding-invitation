@@ -148,3 +148,37 @@ photoStage.addEventListener('touchend', event => {
 photoStage.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
 
 document.querySelector('#copy-parking').addEventListener('click', () => copyText(parkingAddress, '주차장 주소를 복사했습니다.'));
+
+// All driving buttons use the dedicated parking building, not the wedding hall.
+// Coordinate source: https://mapcarta.com/W1222389479 (building centre).
+const navigationDestination = { name: '현대해상 강서사옥', lat: 37.52749, lng: 126.89662 };
+const isAndroid = /Android/i.test(navigator.userAgent);
+const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const destinationName = encodeURIComponent(navigationDestination.name);
+const navigationApps = {
+  tmap: {
+    scheme: 'tmap', package: 'com.skt.tmap.ku',
+    path: `route?rGoName=${destinationName}&rGoX=${navigationDestination.lng}&rGoY=${navigationDestination.lat}`,
+    iosStore: 'https://apps.apple.com/kr/app/id431589174'
+  },
+  naver: {
+    scheme: 'nmap', package: 'com.nhn.android.nmap',
+    path: `navigation?dlat=${navigationDestination.lat}&dlng=${navigationDestination.lng}&dname=${destinationName}&appname=${encodeURIComponent(shareUrl())}`,
+    iosStore: 'https://apps.apple.com/kr/app/id311867728'
+  }
+};
+Object.entries(navigationApps).forEach(([id, app]) => {
+  const link = document.querySelector(`[data-navigation="${id}"]`);
+  const storeUrl = isIOS ? app.iosStore : `https://play.google.com/store/apps/details?id=${app.package}`;
+  document.querySelector(`[data-install="${id}"]`).href = storeUrl;
+  if (isAndroid) {
+    link.href = `intent://${app.path}#Intent;scheme=${app.scheme};action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=${app.package};S.browser_fallback_url=${encodeURIComponent(storeUrl)};end`;
+  } else if (isIOS) {
+    link.href = `${app.scheme}://${app.path}`;
+  } else {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      toast('휴대폰에서 열면 내비게이션 앱으로 연결됩니다.');
+    });
+  }
+});

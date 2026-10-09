@@ -12,6 +12,16 @@
 - 초대 문구, 혼주 소개, 2027년 1월 달력, 한국 시간 기준 카운트다운
 - 일정 파일 다운로드, 네이버/카카오 지도, 주소 복사, 네이티브 공유 및 링크 복사
 - 반짝임 설정, 스크롤 등장 효과, 동작 줄이기 설정 지원
+- 혼주 소개는 전병채·채명심의 장남 지훈, 유병우·박향순의 장녀 지형으로 표기합니다.
+- 주차장으로 티맵·네이버 내비 앱 연결 및 카카오맵 길찾기를 제공합니다. Android는 앱 설치 페이지로의 대체 연결, iOS는 앱 설치 링크를 제공합니다. 휴대폰 실기기에서 앱 실행은 확인하지 않았습니다.
+
+## 내비게이션 연결
+
+차량 안내 목적지는 현대해상 강서사옥(당산로 141)입니다. 건물 중심 좌표 `37.52749, 126.89662`는 [Mapcarta / OpenStreetMap](https://mapcarta.com/W1222389479)을 사용하며, 주차장 입구의 정밀 좌표를 뜻하지 않습니다.
+
+- [네이버 지도 URL Scheme](https://guide.ncloud-docs.com/docs/maps-url-scheme): `nmap://navigation`.
+- [TMAP API 안내](https://openapi.sk.com/qnaCommunity/51), [앱 호출 관련 문의](https://openapi.sk.com/qnaCommunity/716): `tmap://route`의 `rGoName`, `rGoX`(경도), `rGoY`(위도).
+- 카카오내비 직접 실행은 미연결입니다. [공식 SDK](https://developers.kakao.com/docs/ko/kakaonavi/js)의 JavaScript 키와 도메인 등록 또는 사용자가 제공한 목적지 공유 링크가 필요합니다. 현재 카카오 버튼은 명칭대로 카카오맵 길찾기를 엽니다.
 
 ## 수정 위치
 
