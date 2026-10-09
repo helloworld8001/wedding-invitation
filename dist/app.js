@@ -1,5 +1,6 @@
-const weddingTime = new Date('2027-01-02T15:00:00+09:00');
+const weddingTime = new Date('2027-01-02T15:30:00+09:00');
 const address = '서울특별시 영등포구 국회대로 558';
+const parkingAddress = '서울시 영등포구 당산로 141 현대해상 강서사옥';
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const motionButton = document.querySelector('#motion-toggle');
 let effectsEnabled = !reducedMotion.matches;
@@ -65,10 +66,10 @@ async function copyText(value, successMessage) {
     toast(successMessage);
   } catch {
     const dialog = document.querySelector('#copy-dialog');
-    dialog.querySelector('h2').textContent = value === address ? '예식장 주소' : '청첩장 링크';
+    dialog.querySelector('h2').textContent = value === address ? '예식장 주소' : value === parkingAddress ? '주차장 주소' : '청첩장 링크';
     const input = dialog.querySelector('input');
     input.value = value;
-    input.setAttribute('aria-label', value === address ? '예식장 주소' : '청첩장 링크');
+    input.setAttribute('aria-label', value === address ? '예식장 주소' : value === parkingAddress ? '주차장 주소' : '청첩장 링크');
     dialog.showModal(); input.focus(); input.select();
   }
 }
@@ -78,7 +79,7 @@ document.querySelector('#copy-link').addEventListener('click', () => copyText(sh
 document.querySelector('#close-dialog').addEventListener('click', () => document.querySelector('#copy-dialog').close());
 document.querySelector('#share').addEventListener('click', async () => {
   if (navigator.share) {
-    try { await navigator.share({ title: '지훈 그리고 지형, 결혼합니다', text: '2027년 1월 2일 토요일 오후 3시\n웨스턴베니비스 영등포', url: shareUrl() }); return; }
+    try { await navigator.share({ title: '지훈 그리고 지형, 결혼합니다', text: '2027년 1월 2일 토요일 오후 3시 30분\n웨스턴베니비스 영등포', url: shareUrl() }); return; }
     catch (error) { if (error.name === 'AbortError') return; }
   }
   await copyText(shareUrl(), '청첩장 링크를 복사했습니다.');
@@ -145,3 +146,5 @@ photoStage.addEventListener('touchend', event => {
   touchStart = null;
 }, { passive: true });
 photoStage.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
+
+document.querySelector('#copy-parking').addEventListener('click', () => copyText(parkingAddress, '주차장 주소를 복사했습니다.'));
