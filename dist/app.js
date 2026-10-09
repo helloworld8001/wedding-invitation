@@ -83,3 +83,65 @@ document.querySelector('#share').addEventListener('click', async () => {
   }
   await copyText(shareUrl(), '청첩장 링크를 복사했습니다.');
 });
+
+// Native dialog provides focus trapping, Escape support, and focus restoration.
+const galleryItems = [...document.querySelectorAll('.gallery-item')];
+const photoDialog = document.querySelector('#photo-dialog');
+const photoImage = photoDialog.querySelector('.photo-full');
+const photoError = photoDialog.querySelector('.photo-error');
+const photoStage = photoDialog.querySelector('.photo-stage');
+let photoIndex = 0;
+let galleryTrigger;
+let touchStart;
+let savedScrollY = 0;
+function showPhoto(index) {
+  photoIndex = (index + galleryItems.length) % galleryItems.length;
+  const item = galleryItems[photoIndex];
+  photoError.hidden = true;
+  photoImage.hidden = false;
+  photoImage.alt = item.querySelector('img').alt;
+  photoImage.src = item.href;
+  photoDialog.querySelector('.photo-original').href = item.href;
+  photoDialog.querySelector('.photo-counter').textContent = `${String(photoIndex + 1).padStart(2, '0')} / ${String(galleryItems.length).padStart(2, '0')}`;
+  const nextPhoto = new Image();
+  nextPhoto.src = galleryItems[(photoIndex + 1) % galleryItems.length].href;
+}
+photoImage.addEventListener('error', () => { photoImage.hidden = true; photoError.hidden = false; });
+galleryItems.forEach((item, index) => item.addEventListener('click', event => {
+  if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  galleryTrigger = item;
+  savedScrollY = window.scrollY;
+  showPhoto(index);
+  photoDialog.showModal();
+  document.body.style.top = `-${savedScrollY}px`;
+  document.body.classList.add('photo-open');
+}));
+photoDialog.querySelector('.photo-close').addEventListener('click', () => photoDialog.close());
+photoDialog.querySelector('.photo-prev').addEventListener('click', () => showPhoto(photoIndex - 1));
+photoDialog.querySelector('.photo-next').addEventListener('click', () => showPhoto(photoIndex + 1));
+photoDialog.addEventListener('keydown', event => {
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    event.preventDefault();
+    showPhoto(photoIndex + (event.key === 'ArrowRight' ? 1 : -1));
+  }
+});
+photoDialog.addEventListener('close', () => {
+  document.body.classList.remove('photo-open');
+  document.body.style.top = '';
+  window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+  galleryTrigger?.focus({ preventScroll: true });
+  touchStart = null;
+});
+photoStage.addEventListener('touchstart', event => {
+  touchStart = event.touches.length === 1 ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null;
+}, { passive: true });
+photoStage.addEventListener('touchend', event => {
+  if (!touchStart || event.touches.length > 0) return;
+  const touch = event.changedTouches[0];
+  const dx = touch.clientX - touchStart.x;
+  const dy = touch.clientY - touchStart.y;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) showPhoto(photoIndex + (dx < 0 ? 1 : -1));
+  touchStart = null;
+}, { passive: true });
+photoStage.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
