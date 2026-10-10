@@ -59,23 +59,24 @@ function toast(message) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove('visible'), 3000);
 }
-async function copyText(value, successMessage) {
+async function copyText(value, successMessage, label = value === address ? '예식장 주소' : value === parkingAddress ? '주차장 주소' : '청첩장 링크') {
   try {
     if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
     await navigator.clipboard.writeText(value);
     toast(successMessage);
   } catch {
     const dialog = document.querySelector('#copy-dialog');
-    dialog.querySelector('h2').textContent = value === address ? '예식장 주소' : value === parkingAddress ? '주차장 주소' : '청첩장 링크';
+    dialog.querySelector('h2').textContent = label;
     const input = dialog.querySelector('input');
     input.value = value;
-    input.setAttribute('aria-label', value === address ? '예식장 주소' : value === parkingAddress ? '주차장 주소' : '청첩장 링크');
+    input.setAttribute('aria-label', label);
     dialog.showModal(); input.focus(); input.select();
   }
 }
 function shareUrl() { return new URL('./', window.location.href).href; }
 document.querySelector('#copy-address').addEventListener('click', () => copyText(address, '예식장 주소를 복사했습니다.'));
 document.querySelector('#copy-link').addEventListener('click', () => copyText(shareUrl(), '청첩장 링크를 복사했습니다.'));
+document.querySelector('#copy-bride-account').addEventListener('click', () => copyText(document.querySelector('#bride-account-number').textContent.trim(), '신부 계좌번호를 복사했습니다.', '신부 유지형 · 카카오뱅크 계좌번호'));
 document.querySelector('#close-dialog').addEventListener('click', () => document.querySelector('#copy-dialog').close());
 document.querySelector('#share').addEventListener('click', async () => {
   if (navigator.share) {
