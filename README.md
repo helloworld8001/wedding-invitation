@@ -6,6 +6,10 @@
 
 `npm run dev` 실행 후 http://localhost:4173 에서 확인합니다. 별도 패키지 설치나 빌드가 필요 없습니다. 배포 디렉터리는 `dist/`입니다.
 
+## GitHub Pages
+
+GitHub Actions 배포 설정과 배포 주소 자동 반영 스크립트를 준비했습니다. 설정 순서와 파일 구성은 [GITHUB-PAGES.md](GITHUB-PAGES.md)를 참고하세요. GitHub Pages용 산출물은 `.artifacts/github-pages/`입니다.
+
 ## 구성
 
 - 제공된 웨딩 사진, 우드·아이보리·샴페인 컬러, 한글 명조와 영문 세리프

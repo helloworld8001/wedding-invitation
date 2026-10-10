@@ -3,5 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "scripts": { "dev": "node server.mjs", "start": "node server.mjs", "check": "node --check dist/app.js" }
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "check": "node --check dist/app.js",
+    "build:pages": "node scripts/prepare-github-pages.mjs"
+  }
 }

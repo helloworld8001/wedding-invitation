@@ -73,7 +73,7 @@ async function copyText(value, successMessage) {
     dialog.showModal(); input.focus(); input.select();
   }
 }
-function shareUrl() { return new URL('/', window.location.href).href; }
+function shareUrl() { return new URL('./', window.location.href).href; }
 document.querySelector('#copy-address').addEventListener('click', () => copyText(address, '예식장 주소를 복사했습니다.'));
 document.querySelector('#copy-link').addEventListener('click', () => copyText(shareUrl(), '청첩장 링크를 복사했습니다.'));
 document.querySelector('#close-dialog').addEventListener('click', () => document.querySelector('#copy-dialog').close());
