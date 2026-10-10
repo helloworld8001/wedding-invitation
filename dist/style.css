@@ -74,6 +74,7 @@ body.photo-open{position:fixed;width:100%;overflow:hidden}
 .gift{padding-top:66px;padding-bottom:66px;border-top:1px solid var(--line)}
 .gift-copy{font-size:12px;line-height:2.25;color:var(--muted);margin:24px 0 30px;word-break:keep-all}
 .gift-account{border:1px solid var(--line);background:#faf7f0;text-align:left}
+.gift-account+.gift-account{margin-top:12px}
 .gift-account summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;padding:16px 20px;font-size:13px;cursor:pointer;list-style:none}
 .gift-account summary::-webkit-details-marker{display:none}
 .gift-account summary:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
