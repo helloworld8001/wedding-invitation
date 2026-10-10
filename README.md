@@ -10,6 +10,10 @@
 
 GitHub Actions 배포 설정과 배포 주소 자동 반영 스크립트를 준비했습니다. 설정 순서와 파일 구성은 [GITHUB-PAGES.md](GITHUB-PAGES.md)를 참고하세요. GitHub Pages용 산출물은 `.artifacts/github-pages/`입니다.
 
+- Pages: https://helloworld11929-art.github.io/wedding-invitation/
+- GitHub: https://github.com/helloworld11929-art/wedding-invitation
+- 업데이트: 변경 커밋 후 `git push github master`
+
 ## 구성
 
 - 제공된 웨딩 사진, 우드·아이보리·샴페인 컬러, 한글 명조와 영문 세리프
