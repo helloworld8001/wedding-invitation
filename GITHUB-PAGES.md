@@ -2,9 +2,9 @@
 
 ## 연결된 저장소
 
-- 저장소: https://github.com/helloworld11929-art/wedding-invitation
-- Pages 주소: https://helloworld11929-art.github.io/wedding-invitation/
-- 배포 기록: https://github.com/helloworld11929-art/wedding-invitation/actions
+- 저장소: https://github.com/helloworld8001/wedding-invitation
+- Pages 주소: https://helloworld8001.github.io/wedding-invitation/
+- 배포 기록: https://github.com/helloworld8001/wedding-invitation/actions
 - Git 원격 이름: `github`, 기본 브랜치: `master`
 - 인증: GitHub CLI(`gh`), Pages 배포 방식: GitHub Actions
 

@@ -10,9 +10,16 @@
 
 GitHub Actions 배포 설정과 배포 주소 자동 반영 스크립트를 준비했습니다. 설정 순서와 파일 구성은 [GITHUB-PAGES.md](GITHUB-PAGES.md)를 참고하세요. GitHub Pages용 산출물은 `.artifacts/github-pages/`입니다.
 
-- Pages: https://helloworld11929-art.github.io/wedding-invitation/
-- GitHub: https://github.com/helloworld11929-art/wedding-invitation
+- Pages: https://helloworld8001.github.io/wedding-invitation/
+- GitHub: https://github.com/helloworld8001/wedding-invitation
 - 업데이트: 변경 커밋 후 `git push github master`
+
+## 청첩장 QR 코드
+
+- 연결 주소: https://helloworld8001.github.io/wedding-invitation/
+- [PNG 다운로드](dist/assets/invitation-qr.png), [인쇄용 SVG](dist/assets/invitation-qr.svg)
+- 흰 배경·검정 코드, 사방 4모듈 여백, 오류 복원 수준 Q로 생성했습니다. 인쇄할 때 사방의 흰 여백을 유지하세요.
+- QR에는 위 주소가 직접 들어 있습니다. 주소를 바꾸면 QR도 새로 생성해야 합니다.
 
 ## 구성
 
