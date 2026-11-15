@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261115-2">
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -36,10 +36,17 @@
   <main class="invitation">
     <header class="topbar"><a href="#home" class="monogram" aria-label="첫 화면으로">J<span>&</span>J</a><span>우리의 시작, 2027. 01. 02</span><button id="motion-toggle" class="icon-button" aria-label="반짝임 효과 끄기" aria-pressed="true"><svg><use href="#i-spark"/></svg></button></header>
     <section id="home" class="hero" aria-label="전지훈과 유지형의 결혼식">
-      <img class="hero-photo" src="assets/wedding.jpg" alt="따뜻한 우드 배경 앞에서 샴페인 잔을 맞대며 웃는 지훈과 지형" width="1280" height="1920" fetchpriority="high">
-      <div class="hero-shade"></div><div class="sparkles" aria-hidden="true"></div>
-      <div class="hero-title"><span class="eyebrow">WE’RE GETTING MARRIED</span><h1>You &amp; me,<br><em>forever.</em></h1></div>
-      <div class="hero-bottom"><div class="hero-names">전지훈 <span>&</span> 유지형</div><div class="hero-event"><p class="hero-date">2027년 1월 2일 토요일</p><p class="hero-time">오후 3시 30분</p><p class="hero-venue">웨스턴베니비스 영등포</p><p class="hero-address">서울 영등포구 국회대로 558</p></div><a href="#letter" class="scroll-cue" aria-label="초대글 읽기"><span>SCROLL TO DISCOVER</span><span class="scroll-line"></span></a></div>
+      <div class="hero-portrait">
+        <img class="hero-photo" src="assets/wedding.jpg" alt="따뜻한 우드 배경 앞에서 샴페인 잔을 맞대며 웃는 지훈과 지형" width="1280" height="1920" fetchpriority="high">
+        <div class="hero-shade"></div><div class="sparkles" aria-hidden="true"></div>
+        <div class="hero-title"><span class="eyebrow">WE’RE GETTING MARRIED</span><h1>You &amp; me, <em>forever.</em></h1></div>
+      </div>
+      <div class="hero-bottom">
+        <span class="hero-card-label">THE WEDDING OF</span>
+        <div class="hero-names">전지훈 <span>&</span> 유지형</div>
+        <div class="hero-event"><p class="hero-date">2027년 1월 2일 <span>토요일</span></p><p class="hero-time">오후 3시 30분</p><span class="hero-divider" aria-hidden="true"></span><p class="hero-venue">웨스턴베니비스 영등포</p><p class="hero-address">서울 영등포구 국회대로 558</p></div>
+        <a href="#location" class="hero-directions">오시는 길 안내<svg><use href="#i-arrow"/></svg></a>
+      </div>
     </section>
     <nav class="section-nav" aria-label="청첩장 메뉴"><a href="#letter">초대의 글</a><span>·</span><a href="#day">예식 안내</a><span>·</span><a href="#gallery">갤러리</a><span>·</span><a href="#location">오시는 길</a></nav>
     <section id="letter" class="letter section-padding">
