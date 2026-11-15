@@ -73,7 +73,11 @@ async function copyText(value, successMessage, label = value === address ? '예�
     dialog.showModal(); input.focus(); input.select();
   }
 }
-function shareUrl() { return new URL('./', window.location.href).href; }
+function shareUrl() {
+  const url = new URL('./', window.location.href);
+  url.searchParams.set('v', '20261115');
+  return url.href;
+}
 document.querySelector('#copy-address').addEventListener('click', () => copyText(address, '예식장 주소를 복사했습니다.'));
 document.querySelector('#copy-link').addEventListener('click', () => copyText(shareUrl(), '청첩장 링크를 복사했습니다.'));
 document.querySelector('#copy-bride-account').addEventListener('click', () => copyText(document.querySelector('#bride-account-number').textContent.trim(), '신부 계좌번호를 복사했습니다.', '신부 유지형 · 카카오뱅크 계좌번호'));
@@ -81,7 +85,7 @@ document.querySelector('#copy-groom-account').addEventListener('click', () => co
 document.querySelector('#close-dialog').addEventListener('click', () => document.querySelector('#copy-dialog').close());
 document.querySelector('#share').addEventListener('click', async () => {
   if (navigator.share) {
-    try { await navigator.share({ title: '지훈 그리고 지형, 결혼합니다', text: '2027년 1월 2일 토요일 오후 3시 30분\n웨스턴베니비스 영등포', url: shareUrl() }); return; }
+    try { await navigator.share({ title: '전지훈 · 유지형 결혼합니다', text: '2027년 1월 2일 토요일 오후 3시 30분\n웨스턴베니비스 영등포\n서울 영등포구 국회대로 558', url: shareUrl() }); return; }
     catch (error) { if (error.name === 'AbortError') return; }
   }
   await copyText(shareUrl(), '청첩장 링크를 복사했습니다.');

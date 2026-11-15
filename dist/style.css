@@ -85,3 +85,18 @@ body.photo-open{position:fixed;width:100%;overflow:hidden}
 .gift-bank{font-family:var(--sans);font-size:11px;color:var(--muted);margin-top:20px}
 .gift-number{font-family:var(--sans);font-size:16px;letter-spacing:.5px;font-variant-numeric:tabular-nums;margin-top:8px;white-space:nowrap}
 .gift-copy-button{width:100%;min-height:44px;margin-top:22px;font-size:11px;gap:8px}
+
+/* Keep the essential wedding details readable on the cover, including small phones. */
+.hero-bottom{padding-inline:20px;bottom:20px;text-shadow:0 2px 12px #160d08b3}
+.hero-event{margin-top:16px}
+.hero-event p{margin:0;line-height:1.65;letter-spacing:.2px;color:#fff8ed;word-break:keep-all}
+.hero-event .hero-date{font-size:16px}
+.hero-event .hero-time{font-size:22px;font-weight:500;margin-top:2px}
+.hero-event .hero-venue{font-size:20px;font-weight:500;margin-top:13px}
+.hero-event .hero-address{font-size:14px;margin-top:4px}
+.hero-bottom .scroll-cue{margin-top:20px}
+.hero-shade{background:linear-gradient(180deg,#33160742 0%,transparent 34%,#261a0f14 50%,#261a0f9c 73%,#261a0ff0 100%)}
+.location h3{font-size:23px;line-height:1.6}
+.location p.address{font-size:16px;line-height:1.8;word-break:keep-all}
+.day .date-caption{font-size:16px;line-height:1.8}
+@media(max-width:380px){.hero-event .hero-date{font-size:15px}.hero-event .hero-time{font-size:20px}.hero-event .hero-venue{font-size:18px}.hero-event .hero-address{font-size:13px}.hero-bottom{padding-inline:16px}.location h3{font-size:21px}.location p.address{font-size:15px}}
