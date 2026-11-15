@@ -67,17 +67,30 @@ async function copyText(value, successMessage, label = value === address ? '예�
   } catch {
     const dialog = document.querySelector('#copy-dialog');
     dialog.querySelector('h2').textContent = label;
-    const input = dialog.querySelector('input');
-    input.value = value;
-    input.setAttribute('aria-label', label);
-    dialog.showModal(); input.focus(); input.select();
+    const field = dialog.querySelector('textarea');
+    field.value = value;
+    field.rows = value.includes('\n') ? 9 : 3;
+    field.setAttribute('aria-label', label);
+    dialog.showModal(); field.focus(); field.select();
   }
 }
 function shareUrl() {
   const url = new URL('./', window.location.href);
-  url.searchParams.set('v', '20261115');
+  url.searchParams.set('v', '20261115-4');
   return url.href;
 }
+const invitationMessage = [
+  '전지훈 ♥ 유지형 결혼합니다',
+  '',
+  '날짜 | 2027년 1월 2일 (토)',
+  '시간 | 오후 3시 30분',
+  '장소 | 웨스턴베니비스 영등포',
+  '주소 | 서울 영등포구 국회대로 558'
+].join('\n');
+function copyInvitationMessage() {
+  return copyText(`${invitationMessage}\n\n${shareUrl()}`, '예식 안내문을 복사했습니다. 카카오톡에 붙여 넣어 주세요.', '예식 안내문');
+}
+document.querySelector('#copy-invitation').addEventListener('click', copyInvitationMessage);
 document.querySelector('#copy-address').addEventListener('click', () => copyText(address, '예식장 주소를 복사했습니다.'));
 document.querySelector('#copy-link').addEventListener('click', () => copyText(shareUrl(), '청첩장 링크를 복사했습니다.'));
 document.querySelector('#copy-bride-account').addEventListener('click', () => copyText(document.querySelector('#bride-account-number').textContent.trim(), '신부 계좌번호를 복사했습니다.', '신부 유지형 · 카카오뱅크 계좌번호'));
@@ -85,10 +98,10 @@ document.querySelector('#copy-groom-account').addEventListener('click', () => co
 document.querySelector('#close-dialog').addEventListener('click', () => document.querySelector('#copy-dialog').close());
 document.querySelector('#share').addEventListener('click', async () => {
   if (navigator.share) {
-    try { await navigator.share({ title: '전지훈 · 유지형 결혼합니다', text: '2027년 1월 2일 토요일 오후 3시 30분\n웨스턴베니비스 영등포\n서울 영등포구 국회대로 558', url: shareUrl() }); return; }
+    try { await navigator.share({ title: '전지훈 · 유지형 결혼합니다', text: invitationMessage, url: shareUrl() }); return; }
     catch (error) { if (error.name === 'AbortError') return; }
   }
-  await copyText(shareUrl(), '청첩장 링크를 복사했습니다.');
+  await copyInvitationMessage();
 });
 
 // Native dialog provides focus trapping, Escape support, and focus restoration.

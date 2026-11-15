@@ -16,7 +16,7 @@ const escapeAttribute = value => value.replaceAll('&', '&amp;').replaceAll('"', 
 let html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
 for (const [property, value] of [
   ['og:url', baseUrl.href],
-  ['og:image', new URL('assets/share-20261115.png', baseUrl).href]
+  ['og:image', new URL('assets/share-photo-20261115.jpg', baseUrl).href]
 ]) {
   const pattern = new RegExp(`<meta property="${property}" content="[^"]*">`, 'g');
   if ([...html.matchAll(pattern)].length !== 1) throw new Error(`Expected one ${property} metadata tag.`);
