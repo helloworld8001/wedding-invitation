@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Noto Serif KR';
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url('assets/fonts/noto-serif-kr.woff2?v=bd49d3469e5f') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url('assets/fonts/noto-sans-kr.woff2?v=f6bcab532fa7') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/cormorant-garamond.woff2?v=02aec408bdb5') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/cormorant-garamond-italic.woff2?v=44988f5c0982') format('woff2');
+}
