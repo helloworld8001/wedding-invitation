@@ -95,6 +95,7 @@ document.querySelector('#copy-address').addEventListener('click', () => copyText
 document.querySelector('#copy-link').addEventListener('click', () => copyText(shareUrl(), '청첩장 링크를 복사했습니다.'));
 document.querySelector('#copy-bride-account').addEventListener('click', () => copyText(document.querySelector('#bride-account-number').textContent.trim(), '신부 계좌번호를 복사했습니다.', '신부 유지형 · 카카오뱅크 계좌번호'));
 document.querySelector('#copy-groom-account').addEventListener('click', () => copyText(document.querySelector('#groom-account-number').textContent.trim(), '신랑 계좌번호를 복사했습니다.', '신랑 전지훈 · 카카오뱅크 계좌번호'));
+document.querySelector('#copy-groom-parent-account').addEventListener('click', () => copyText(document.querySelector('#groom-parent-account-number').textContent.trim(), '신랑 측 혼주 계좌번호를 복사했습니다.', '신랑 측 혼주 채명심 · 농협 계좌번호'));
 document.querySelector('#close-dialog').addEventListener('click', () => document.querySelector('#copy-dialog').close());
 document.querySelector('#share').addEventListener('click', async () => {
   if (navigator.share) {

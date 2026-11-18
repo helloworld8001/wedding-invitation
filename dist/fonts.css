@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400 500;
   font-display: swap;
-  src: url('assets/fonts/noto-serif-kr.woff2?v=bd49d3469e5f') format('woff2');
+  src: url('assets/fonts/noto-serif-kr.woff2?v=227c94b2dd5b') format('woff2');
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 400 500;
   font-display: swap;
-  src: url('assets/fonts/noto-sans-kr.woff2?v=f6bcab532fa7') format('woff2');
+  src: url('assets/fonts/noto-sans-kr.woff2?v=c66314143707') format('woff2');
 }
 
 @font-face {
